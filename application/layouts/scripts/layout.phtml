@@ -1,0 +1,23 @@
+<?php echo $this->doctype() ?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <?php echo $this->headTitle() ?>
+    <?php echo $this->headLink() ?>
+    <?php echo $this->headStyle() ?>
+	<script> 
+		var GLOBAL_PATH 	= '<?= $this->userConfig; ?>'; 
+		var GLOBAL_ACTION 	= '<?= $this->userConfigAction; ?>';
+		var GLOBAL_PARAMS 	= '<?= $this->userConfigParams; ?>';
+		var ALEGRA_PATH 	= '<?= $this->alegraPath; ?>';
+	</script>
+    <?php echo $this->headScript() ?>
+</head>
+<body id="<?= $this->body ?>" class="x-body x-webkit x-chrome">
+	<div class="main-container">
+		<div class="header-wrapper"><?php echo $this->render('_header.phtml') ?></div>
+		<div id="notification-wrapper"></div>
+	    <div class="main-wrapper"><?php echo $this->layout()->content ?></div>
+	    <div class="footer-wrapper"><?php echo $this->render('_footer.phtml') ?></div>
+	</div>
+</body>
+</html>

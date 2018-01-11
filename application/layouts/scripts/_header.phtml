@@ -1,0 +1,313 @@
+<div id="membership-notifications-wrapper" class="trial" data-user="120097">
+    <div class="membership-notification priority-low">
+        <div class="header">
+            <div class="title">
+                <h1>
+                    Te quedan <strong>29</strong> días en la versión  Plan Demo.  Después podrás seleccionar el plan que desees <strong><a href="/plan">ver más</a></strong>                        
+                </h1>
+            </div>
+        </div>
+        <div class="footer"></div>
+    </div>
+</div>
+<div id="hints-wrapper-top"></div>
+
+<header style="">
+    <div class="logo" style="float:left; margin-top: 15px; margin-left:7px; margin-bottom: 3px;">
+        <a href="/">
+            <img src="https://cdn1.alegra.com/images/logo_alegra.png" style="width: 178px">
+        </a>
+        <a id="change-logo-link" class="change-logo" href="#">Utilizar mi logo</a>
+    </div>
+    <div id="search" class="search-input" style="float:left; margin-left: 86px; margin-top: 23px;">
+        <table class="x-field x-table-plain x-form-item x-field-default x-form-dirty" cellpadding="0" id="combobox-1034" style="table-layout: fixed;">
+            <tbody>
+                <tr id="combobox-1034-inputRow">
+                    <td id="combobox-1034-labelCell" style="display:none;" valign="top" halign="left" width="105" class="x-field-label-cell">
+                        <label id="combobox-1034-labelEl" for="combobox-1034-inputEl" class="x-form-item-label x-unselectable x-form-item-label-left" style="width:100px;margin-right:5px;" unselectable="on"></label>
+                    </td>
+                    <td class="x-form-item-body" id="combobox-1034-bodyEl" colspan="3" role="presentation" style="width: 150px;">
+                        <table id="combobox-1034-triggerWrap" class="x-form-trigger-wrap" cellpadding="0" cellspacing="0" style="width: 150px; table-layout: fixed;">
+                            <tbody>
+                                <tr>
+                                    <td id="combobox-1034-inputCell" class="x-form-trigger-input-cell" style="width: 100%;">
+                                        <div class="x-hide-display x-form-data-hidden" role="presentation" id="ext-gen1080"></div>
+                                        <!--
+                                        <input id="combobox-1034-inputEl" type="text" class="x-form-field x-form-text x-form-empty-field" autocomplete="off" name="combobox-1034-inputEl" placeholder="Buscar..." aria-invalid="false" data-errorqtip="" style="width: 100%;">
+                                        -->
+                                    </td>
+                                    <td valign="top" class=" x-trigger-cell x-unselectable" style="width:17px;display:none;" id="ext-gen1079">
+                                        <div class="x-trigger-index-0 x-form-trigger x-form-arrow-trigger x-form-trigger-first" role="button" id="ext-gen1078"></div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <ul class="user-menu">
+        <li class="help"><a href="#" target="_blank">Ayuda</a></li>
+        <li class="support" id="support-link"><a href="">Soporte</a></li>
+        <li class="user"><a href="#" title="josemiguelduin@gmail.com - joseduin">
+                josemiguelduin@gmail.co...</a></li>
+        <li class="configuration"><a href="#">Configuración</a></li>
+        <li class="logout"><a href="#">Salir</a></li>
+    </ul>
+</header>
+<div id="app-contact-phone" style="height: 9px; width: 1024px; margin: 0 auto; position: relative; top: -23px; display: none;">
+    <!--
+    <div id="containerMx" style="border: 2px solid rgb(0, 190, 167); border-radius: 5px; padding: 0px 22px; float: right; background-color: rgb(0, 190, 167); color: white; margin-bottom: -17px;"><p style="font-size: 12px; margin: 4px 0px;">Solicita ayuda al 
+        <address style="display: inline-block;">(+1) 305 770 6464</address></p>
+    </div>
+-->
+</div>
+<script type="text/javascript">
+    (function () {
+        var convertDatetimeToColombiaTimezone = function (dateObj) {
+            dateObj.setMinutes(dateObj.getMinutes() + dateObj.getTimezoneOffset() - 300);
+            return dateObj;
+        };
+
+        var excludeDatetimes = [
+            {
+                fromDatetime: new Date(2015, 11, 4, 11, 20),
+                toDatetime: new Date(2015, 11, 4, 20)
+            },
+            {
+                fromDatetime: new Date(2015, 11, 24, 0, 0),
+                toDatetime: new Date(2015, 11, 25, 20)
+            },
+            {
+                fromDatetime: new Date(2015, 11, 31, 0, 0),
+                toDatetime: new Date(2016, 0, 1, 20)
+            },
+            {
+                fromDatetime: new Date(2016, 2, 21, 0, 0),
+                toDatetime: new Date(2016, 2, 25, 20)
+            },
+            // Fiesta de navidad
+            {
+                fromDatetime: new Date(2016, 11, 2, 0, 0),
+                toDatetime: new Date(2016, 11, 2, 20)
+            },
+        ];
+
+        /**
+         * Se convierte el datetime a timezone de Colombia
+         */
+        for (var i = excludeDatetimes.length - 1; i >= 0; i--) {
+            convertDatetimeToColombiaTimezone(excludeDatetimes[i].fromDatetime);
+            convertDatetimeToColombiaTimezone(excludeDatetimes[i].toDatetime);
+        }
+
+        var canShowContactPhone = function (datetime) {
+            var dateObj = typeof datetime === 'undefined' ? new Date() : datetime;
+
+            /**
+             * Se verifica que el datetime sea de lunes a viernes, de 8am a 12pm
+             * o de 2pm a 5pm
+             */
+            var isWeekday = (dateObj.getDay() > 0 && dateObj.getDay() < 6),
+                isMorningWorkTime = (dateObj.getHours() >= 8 && dateObj.getHours() < 12),
+                isAfternoonWorkTime = (dateObj.getHours() >= 14 && dateObj.getHours() < 17);
+            if (isWeekday && (isMorningWorkTime || isAfternoonWorkTime)) {
+                /**
+                 * Se verifica además que el datetime no se encuentre
+                 * entre las fechas-hora de exclusión (excludeDatetimes)
+                 */
+                for (var i = excludeDatetimes.length - 1; i >= 0; i--) {
+                    if (dateObj >= excludeDatetimes[i].fromDatetime && dateObj <= excludeDatetimes[i].toDatetime) {
+                        return false;
+                    }
+                }
+                ;
+
+                return true;
+            }
+            return false;
+        }
+
+        var container = document.createElement('div'),
+            containerStyle = {
+                'border': '2px solid #00BEA7',
+                'border-radius': '5px',
+                'padding': '0px 22px',
+                'float': 'right',
+                'background-color': 'rgb(0, 190, 167)',
+                'color': 'white',
+                'margin-bottom': '-17px'
+            },
+        textP = document.createElement('p'),
+            textPStyle = {
+                'font-size': '12px',
+                'margin': '4px 0'
+            };
+
+        var keyCountry = "other";
+
+        container.id = "containerMx";
+
+        textP.innerHTML = 'Solicita ayuda al <address style="display: inline-block;">(+1) 305 770 6464</address>';
+        for (var styleProperty in containerStyle) {
+            container.style[styleProperty] = containerStyle[styleProperty];
+        }
+
+        for (styleProperty in textPStyle) {
+            textP.style[styleProperty] = textPStyle[styleProperty];
+        }
+
+        container.appendChild(textP);
+        
+        var contactPhoneContainer = document.getElementById("app-contact-phone");
+        contactPhoneContainer.appendChild(container);
+
+        var datetime = new Date();
+
+        /**
+         * Se convierte el datetime a timezone de Colombia
+         */
+        convertDatetimeToColombiaTimezone(datetime);
+
+        if (canShowContactPhone(datetime)) {
+            contactPhoneContainer.style.display = 'block';
+        }
+
+        var intervalSeconds = 60;
+        setInterval(function () {
+            datetime.setSeconds(datetime.getSeconds() + intervalSeconds);
+            if (canShowContactPhone(datetime)) {
+                contactPhoneContainer.style.display = 'block';
+            } else {
+                contactPhoneContainer.style.display = 'none';
+            }
+        }, intervalSeconds * 1000);
+    })();
+</script>
+            
+<nav style="position: relative;">
+    <div style="width:1024px; margin: 0 auto">
+        
+        <ul id="nav1" class="primary">
+            <li class="">
+                <a href="/">Inicio</a>
+            </li>
+            <li class=" hasSubmenu ">
+                <a href="#">Ingresos</a>
+                <ul class="secondary">
+                    <li>
+                        <a href="#">Facturas de venta</a>
+                    </li>
+                    <li>
+                        <a href="#">Facturas recurrentes</a>
+                    </li>
+                    <li>
+                        <a href="#">Pagos recibidos</a>
+                    </li>
+                    <li>
+                        <a href="#">Notas crédito</a>
+                    </li>
+                    <li>
+                        <a href="#">Cotizaciones</a>
+                    </li>
+                    <li>
+                        <a href="#">Remisiones</a>
+                    </li>
+                    <li>
+                        <a href="#">POS</a>
+                    </li>
+                </ul>
+            </li>
+            <li class=" hasSubmenu ">
+                <a href="#">Gastos</a>
+                <ul class="secondary">
+                    <li>
+                        <a href="#">Pagos</a>
+                    </li>
+                    <li>
+                        <a href="#">Facturas de proveedores</a>
+                    </li>
+                    <li>
+                        <a href="#">Pagos Recurrentes</a>
+                    </li>
+                    <li>
+                        <a href="#">Notas débito</a>
+                    </li>
+                    <li>
+                        <a href="#">Órdenes de compra</a>
+                    </li>
+                </ul>
+            </li>
+            <li class=" active active hasSubmenu ">
+                <a href="/">Contactos</a>
+                <ul class="secondary">
+                    <li<?= $this->html()->is_header_active($this->item_header_active, 'todos'); ?>>
+                        <a href="/">Todos</a>
+                    </li>
+                    <li<?= $this->html()->is_header_active($this->item_header_active, 'client'); ?>>
+                        <a href="/index/view-clients">Clientes</a>
+                    </li>
+                    <li<?= $this->html()->is_header_active($this->item_header_active, 'provider'); ?>>
+                        <a href="/index/view-providers">Proveedores</a>
+                    </li>
+                </ul>
+            </li>
+            <li class=" hasSubmenu ">
+                <a href="#">Inventario</a>
+                <ul class="secondary">
+                    <li>
+                        <a href="#">Items de venta</a>
+                    </li>
+                    <li>
+                        <a href="#">Valor de Inventario</a>
+                    </li>
+                    <li>
+                        <a href="#">Ajustes a Inventario</a>
+                    </li>
+                    <li>
+                        <a href="#">Gestión de Items</a>
+                    </li>
+                    <li>
+                        <a href="#">Listas de precios</a>
+                    </li>
+                    <li>
+                        <a href="#">Bodegas</a>
+                    </li>
+                </ul>
+            </li>
+            <li class=" hasSubmenu ">
+                <a href="#">Bancos</a>
+                <ul class="secondary"></ul>
+            </li>
+            <li class=" hasSubmenu ">
+                <a href="#">Categorías</a>
+                <ul class="secondary">
+                    <li>
+                        <a href="#">Categorías</a>
+                    </li>
+                    <li>
+                        <a href="#">Ajustes de Categorías</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="">
+                <a class="menu-small" href="#">Reportes</a>
+            </li>
+            <li id="quick-add-button-holder">
+                <!--
+                <div class="x-btn menu-button x-unselectable x-btn-default-medium x-icon-text-left x-btn-icon-text-left x-btn-default-medium-icon-text-left" style="border-width:1px;width:130px;height:48px;" id="splitbutton-1018">
+                    <div id="splitbutton-1018-btnWrap" class="x-btn-wrap x-btn-split x-btn-split-right" unselectable="on" style="height: 41px;">
+                        <a id="splitbutton-1018-btnEl" class="x-btn-button" role="button" hidefocus="on" unselectable="on" tabindex="0" style="height: 41px;">
+                            <span id="splitbutton-1018-btnInnerEl" class="x-btn-inner x-btn-inner-center" unselectable="on" style="line-height: 41px;">Nuevo</span>
+                            <span role="img" id="splitbutton-1018-btnIconEl" class="x-btn-icon-el icon-add " unselectable="on" style="">&nbsp;
+                            </span>
+                        </a>
+                    </div>
+                </div>
+                -->
+            </li>
+        </ul>
+        <div id="quick-add-button-holder"></div>
+    </div>
+</nav>

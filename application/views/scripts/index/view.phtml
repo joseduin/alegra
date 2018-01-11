@@ -1,0 +1,167 @@
+<div class="main-content">
+    <div id="hints-wrapper">
+    </div>
+    <div class="section-wrapper">
+        <div class="header">
+            <div class="title">
+                <h1><?= $this->client["name"]; ?></h1>
+            </div>
+            <div class="actions">
+                <a class="button2 add" href="#">Crear factura de venta</a>
+                <a class="button2 add" href="#">Crear factura de compra</a>
+                <a class="button2 edit" href="/index/edit/id/<?= $this->client["id"]; ?>">Editar</a>
+                <div id="moreActionsButton" style="display:inline-block">
+                </div>
+            </div>
+        </div>
+        <div class="content"></div>
+    </div>
+    <div id="viewClientInfo" style="float: left; margin-bottom: 20px;">
+        <table class="table-details-vertical gray-header">
+            <tbody>
+                <tr>
+                    <th>
+                        Datos generales
+                    </th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td>Nombre</td>
+                    <td><?= $this->client["name"]; ?></td>
+                </tr>
+                <tr>
+                    <td>Identificación</td>
+                    <td><?= $this->client["identification"]; ?></td>
+                </tr>
+                <tr>
+                    <td>Teléfono</td>
+                    <td><?= $this->client["phonePrimary"]; ?></td>
+                </tr>
+                <tr>
+                    <td>Teléfono 2</td>
+                    <td><?= $this->client["phoneSecondary"]; ?></td>
+                </tr>
+                <tr>
+                    <td>Celular</td>
+                    <td><?= $this->client["mobile"]; ?></td>
+                </tr>
+                <tr>
+                    <td>Dirección</td>
+                    <td><?= $this->client["address"]["address"]; ?></td>
+                </tr>
+                <tr>
+                    <td>Ciudad</td>
+                    <td><?= $this->client["address"]["city"]; ?></td>
+                </tr>
+                <tr>
+                    <td>Correo electrónico</td>
+                    <td><?= $this->client["email"]; ?></td>
+                </tr>                
+                <tr>
+                    <td>Observaciones</td>
+                    <td><?= $this->client["observations"]; ?></td>
+                </tr>
+                <tr>
+                    <td>Archivos adjuntos</td>
+                    <td>
+                        <a class="uploadFile" href="#" data-idtype="<?= $this->client["name"]; ?>" data-type="client" data-canupload="yes" id="ext-gen1086">Adjuntar</a>
+                    </td>
+                </tr>
+            <tr>
+                <td>Enlace estado de cuenta
+                    <div class="tooltip-wrapper" style="left:233px;position:relative;top:-6px;width: 18px;">
+                        <img class="tooltip" src="https://cdn1.alegra.com/images/icons/help.png">
+                        <div class="tooltip-text-container" style="top:5px;">
+                            <div class="tooltip-text-wrapper" style="padding:5px;width:388px;">
+                                <div class="text">
+                                Si necesitas ayuda para generar el enlace al estado de cuenta, haz <a target="_blank" href="https://ayuda.alegra.com/hc/es/articles/115000270906"><strong>clic aquí</strong></a>.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td id="statementLink">
+                </td>
+            </tr>
+
+        </tbody></table>
+    </div>
+
+    <div id="viewClientInfoBalances" style="display: block; width: 470px; margin-bottom: 20px;">
+        <table class="table-details-vertical gray-header">
+            <tbody>
+                <tr>
+                    <th>
+                        Saldos
+                    </th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td>Por cobrar</td>
+                    <td>Bs0.00</td>
+                </tr>
+                <tr>
+                    <td>Por cobrar vencido</td>
+                    <td>Bs0.00</td>
+                </tr>
+                <tr>
+                    <td>Por pagar</td>
+                    <td>Bs0.00</td>
+                </tr>
+                <tr>
+                    <td>Anticipos recibidos</td>
+                    <td>Bs0.00</td>
+                </tr>
+                <tr>
+                    <td>Anticipos entregados</td>
+                    <td>Bs0.00</td>
+                </tr>
+                <tr>
+                    <td>Notas crédito por aplicar</td>
+                    <td>Bs0.00</td>
+                </tr>
+                <tr>
+                    <td>Notas débito por aplicar</td>
+                    <td>Bs0.00</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <?php if (!empty( $this->client["internalContacts"] )): ?>
+    <div id="viewContactsInfo" style="float: left; margin-top: 0;">
+        <table class="table-contact-details">
+            <tbody>
+                <tr>
+                    <th>Contacto</th>
+                    <th>Correo</th>
+                    <th>Teléfono</th>
+                    <th>Celular</th>
+                    <th>Notificaciones</th>
+                </tr>
+                <?php foreach($this->client["internalContacts"] AS $value): ?>
+                    <tr>
+                        <td><?= $value["name"] . ' ' . $value["lastName"]; ?></td>
+                        <td><?= $value["email"] ?></td>
+                        <td><?= $value["phone"] ?></td>
+                        <td><?= $value["mobile"] ?></td>
+                        <td><?= $value["sendNotifications"] == 1 ? "Si" : "No" ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+    <?php endif; ?>  
+
+    <div id="client-tabPanel"></div>  
+    <div id="transactions-holder-wrapper">
+        <div id="transactionsHolder"></div>
+        <div id="totalTransactions">
+            <div class="total-row">
+                <div class="label">Totales </div>
+                <div class="value" id="total-out">Bs0.00</div>
+                <div class="value" id="total-in">Bs0.00</div>
+            </div>
+        </div>
+    </div>
+</div>
